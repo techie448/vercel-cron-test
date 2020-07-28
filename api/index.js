@@ -18,7 +18,7 @@ export default async (req, res) => {
     firebase.firestore()
         .collection('cronTest')
         .doc(num.toString())
-        .set('rishabh')
+        .set({'test':'rishabh'})
         .then((doc) => {
             res.json(doc);
         })
