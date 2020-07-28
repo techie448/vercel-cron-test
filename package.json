@@ -11,6 +11,5 @@
   "license": "ISC",
   "dependencies": {
     "firebase": "^7.17.1",
-    "node-cron": "^2.0.3"
   }
 }

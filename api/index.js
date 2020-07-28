@@ -1,5 +1,4 @@
 const firebase =require("firebase");
-const cron = require('node-cron');
 
 const firebaseConfig = {
     apiKey: "AIzaSyBekBYiDu8qz4hcydS6hFSlTq9dehXIBs4",
@@ -25,9 +24,9 @@ const sendBirthdayMessage = async () => {
 
 
 sendBirthdayMessage();
-cron.schedule(`*/2 * * * *`, sendBirthdayMessage);
 
 module.exports = (req, res) => {
+    sendBirthdayMessage();
     res.json({
         num
     })
