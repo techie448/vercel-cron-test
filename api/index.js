@@ -1,4 +1,4 @@
-const firebase =require("firebase");
+import firebase from "firebase";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBekBYiDu8qz4hcydS6hFSlTq9dehXIBs4",
@@ -25,9 +25,3 @@ export default async (req, res) => {
         num
     })
 };
-
-
-module.exports = (req, res) => {
-    sendBirthdayMessage();
-
-}
