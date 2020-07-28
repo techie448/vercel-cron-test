@@ -12,7 +12,7 @@ const firebaseConfig = {
 };
 
 let num = 0;
-export default async (req, res) => {
+const api =  async (req, res) => {
     console.log(req);
     if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
@@ -24,4 +24,17 @@ export default async (req, res) => {
     res.json({
         num
     })
+};
+
+export default (req, res) => {
+    firebase.firestore()
+        .collection('cronTest')
+        .doc('r')
+        .get()
+        .then((doc) => {
+            res.json(doc.data());
+        })
+        .catch((error) => {
+            res.json({ error });
+        });
 };
