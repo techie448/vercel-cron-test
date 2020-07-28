@@ -12,30 +12,18 @@ const firebaseConfig = {
 };
 
 let num = 0;
-const api =  async (req, res) => {
-    console.log(req);
-    if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
-    const collectionRef = db.collection("cronTest");
-    const term = `I love you 💻 ${num}`;
-    await collectionRef.add({term});
-    num++;
-    console.log(term);
-    res.json({
-        num
-    })
-};
 
-export default (req, res) => {
+export default async (req, res) => {
     if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
     firebase.firestore()
         .collection('cronTest')
-        .doc('r')
-        .get()
+        .doc(num.toString())
+        .set('rishabh')
         .then((doc) => {
-            res.json(doc.data());
+            res.json(doc);
         })
         .catch((error) => {
             res.json({ error });
         });
+    num++;
 };
