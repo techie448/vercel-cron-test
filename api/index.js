@@ -27,6 +27,7 @@ const api =  async (req, res) => {
 };
 
 export default (req, res) => {
+    if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
     firebase.firestore()
         .collection('cronTest')
         .doc('r')
