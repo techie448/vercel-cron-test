@@ -11,23 +11,23 @@ const firebaseConfig = {
     measurementId: "G-6ZH57RS9YD"
 };
 
-if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 let num = 0;
-const sendBirthdayMessage = async () => {
+export default async (req, res) => {
+    console.log(req);
+    if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
     const collectionRef = db.collection("cronTest");
     const term = `I love you 💻 ${num}`;
     await collectionRef.add({term});
     num++;
-    console.log(term)
-};
-
-
-sendBirthdayMessage();
-
-module.exports = (req, res) => {
-    sendBirthdayMessage();
+    console.log(term);
     res.json({
         num
     })
+};
+
+
+module.exports = (req, res) => {
+    sendBirthdayMessage();
+
 }
